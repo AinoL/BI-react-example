@@ -11,30 +11,25 @@ import {
   LabelSeriesPoint
 } from 'react-vis';
 
-const greenData: LabelSeriesPoint[] = [{ x: 10, y: 10, label: '1' }, { x: 10, y: 5, label: '1' }, { x: 10, y: 15, label: '1' }];
+// const data = this.props.data;
+// Label is a required property regardless if you want to use it or not.
+const data: LabelSeriesPoint[] =
+  [
+    { x: 10, y: 10, label: '' },
+    { x: 20, y: 5, label: '' },
+    { x: 30, y: 15, label: '' },
+    { x: 40, y: 10, label: '' },
+    { x: 50, y: 5, label: '' },
+    { x: 60, y: 15, label: '' },
+  ];
 
-// x: number;
-// y: number;
-// label: string;
-// xOffset?: number;
-// yOffset?: number;
-// rotation?: number;
-
-const blueData = [{ x: 'A', y: 12 }, { x: 'B', y: 2 }, { x: 'C', y: 11 }];
-
-const labelData: { x: number, y: number }[] = greenData.map((d, idx) => ({
-  x: d.x,
-  y: Math.max(greenData[idx].y, blueData[idx].y)
-}));
-
-export default class BarChart extends React.Component {
+export default class BarChart extends React.Component<{data: LabelSeriesPoint[]}> {
   state = {
     useCanvas: false
   };
 
   render() {
     const { useCanvas } = this.state;
-    const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
     const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
     return (
       <div>
@@ -43,18 +38,9 @@ export default class BarChart extends React.Component {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <BarSeries className="vertical-bar-series-example" barWidth={1} data={greenData} />
-          <BarSeries barWidth={1} data={blueData} />
-          <LabelSeries data={greenData} />
+          <BarSeries barWidth={0.5} data={data} />
         </XYPlot>
       </div>
     );
   }
 }
-
-// allowOffsetToBeReversed?: boolean;
-// marginLeft?: number;
-// marginTop?: number;
-// rotation?: number; // default: 0
-// labelAnchorX?: string;
-// labelAnchorY?: string;

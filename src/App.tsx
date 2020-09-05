@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import '../node_modules/react-vis/dist/style.css';
 import BarChart from './charts/BarChart'
-import { XYPlot, LineSeries } from 'react-vis';
+import { XYPlot, LineSeries, LabelSeriesPoint } from 'react-vis';
 
 function App() {
 
@@ -18,6 +18,18 @@ function App() {
     { x: 8, y: 2 },
     { x: 9, y: 0 }
   ];
+
+  // Label is a required property regardless if you want to use it or not.
+const barChartData: LabelSeriesPoint[] =
+[
+  { x: 10, y: 10, label: '' },
+  { x: 20, y: 5, label: '' },
+  { x: 30, y: 15, label: '' },
+  { x: 40, y: 10, label: '' },
+  { x: 50, y: 5, label: '' },
+  { x: 60, y: 15, label: '' },
+];
+
   return (
     <div>
       <div className="App">
@@ -25,7 +37,7 @@ function App() {
           <LineSeries data={data} />
         </XYPlot>
       </div>,
-      <BarChart />
+      <BarChart data={barChartData} />
       <div>testi</div>
     </div>
   );
