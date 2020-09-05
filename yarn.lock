@@ -8756,6 +8756,9 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
+reasonml-covid19@../reasonml-covid19/:
+  version "0.1.0"
+
 recursive-readdir@2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/recursive-readdir/-/recursive-readdir-2.2.2.tgz#9946fb3274e1628de6e36b2f6714953b4845094f"
