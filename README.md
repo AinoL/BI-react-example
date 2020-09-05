@@ -1,3 +1,13 @@
+# Data vizualisation demo COVID-19
+
+Tässä demossa esitellään koronatilastoja Suomessa syyskuussa 2020 käyttäen d3.js kirjastoa. Tämän applikaation lisäksi demon ajamiseen tarvitaan ReasonML syntaksilla toteutettu kirjasto datan käsittelyä varten. Kirjasto löytyy Aino Leppäsen githubista.
+
+## Lähdetiedot
+
+Demossa käytetty data on haettu [terveyden ja hyvinvoinnin laitoksen sivuilta (THL)](https://thl.fi/fi/tilastot-ja-data/aineistot-ja-palvelut/avoin-data/varmistetut-koronatapaukset-suomessa-covid-19-)
+
+## Project related info
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

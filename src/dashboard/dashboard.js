@@ -7,6 +7,10 @@ class Dashboard extends React.Component {
         <div>Dashboard be here. {demo.sayHello}</div>
     );
     }
+
+    componentDidMount() {
+        demo.helloWorld();
+    }
   }
 
 export default Dashboard;
