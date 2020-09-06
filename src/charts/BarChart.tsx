@@ -11,6 +11,7 @@ import {
 } from 'react-vis';
 import age from '../chart-data/cases-by-age.json'
 
+// export let ageChartData: any[] = [];
 export default class BarChart extends React.Component<{ data: LabelSeriesPoint[] }> {
   chartData: any[] = [];
   badData: any[] = [];
@@ -29,12 +30,15 @@ export default class BarChart extends React.Component<{ data: LabelSeriesPoint[]
     const caseValuesArray = Object.values(caseValuesObject);
 
     let finalArray: { ageInterval: string, cases: string }[] = []
+    // Export data to be modified elsewhere for a test. 
+    // ageChartData = [...finalArray];
     ageIntervalsArray.map((a, i) => {
       finalArray.push({ ageInterval: a as string, cases: caseValuesArray[i] as string })
     });
 
     /**
      * TODO: Move last part of parsing to ReasonML library
+     * Move first part of parsing to a service?
      * Define array + props types
      */
     // let chartData: { x: string, y: number, label: string }[] = []

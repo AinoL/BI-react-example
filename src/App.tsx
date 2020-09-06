@@ -3,6 +3,7 @@ import './App.css';
 import '../node_modules/react-vis/dist/style.css';
 import BarChart from './charts/BarChart'
 import PieChart from './charts/PieChart'
+import PieChart2 from './charts/PieChart2'
 import { XYPlot, LineSeries, LabelSeriesPoint } from 'react-vis';
 
 function App() {
@@ -32,15 +33,16 @@ function App() {
     ];
 
   return (
-    <div>
-      <PieChart />
-      <div className="App">
+    <div className="App">
+      <div>
         <XYPlot height={300} width={300}>
           <LineSeries data={data} />
         </XYPlot>
       </div>,
 
       <BarChart data={barChartData} />
+      <PieChart2 />
+      {/* <PieChart /> */}
     </div>
   );
 }
