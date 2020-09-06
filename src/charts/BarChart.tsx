@@ -13,6 +13,7 @@ import age from '../chart-data/cases-by-age.json'
 
 export default class BarChart extends React.Component<{ data: LabelSeriesPoint[] }> {
   chartData: any[] = [];
+  badData: any[] = [];
   state = {
     useCanvas: false
   };
@@ -26,34 +27,58 @@ export default class BarChart extends React.Component<{ data: LabelSeriesPoint[]
 
     const caseValuesObject = ageJsonAsObject.dataset.value;
     const caseValuesArray = Object.values(caseValuesObject);
-    
-    let finalArray: { ageInterval: string, cases: string}[] = []
+
+    let finalArray: { ageInterval: string, cases: string }[] = []
     ageIntervalsArray.map((a, i) => {
-      finalArray.push({ ageInterval: a as string, cases: caseValuesArray[i] as string})
+      finalArray.push({ ageInterval: a as string, cases: caseValuesArray[i] as string })
     });
 
-    // This can be moved to ReasonML library
+    /**
+     * TODO: Move last part of parsing to ReasonML library
+     * Define array + props types
+     */
     // let chartData: { x: string, y: number, label: string }[] = []
     finalArray.map((a) => {
-      this.chartData.push({x: a.ageInterval as string, y: parseInt(a.cases) as number, label: ''})
+      this.chartData.push({ x: a.ageInterval as string, y: parseInt(a.cases) as number, label: '' })
     });
+    this.badData = [
+      ...this.chartData
+    ];
+    this.chartData.pop();
   }
+
+  /**
+   * TODO: Move datas to parent component and give them as parametres. This component should not return multiple charts. 
+   */
 
   render() {
     const data = this.props.data;
-    const chartData = this.chartData;
-    console.log(chartData.length);
+    const chartData = this.chartData
+    const badData = this.badData
     const { useCanvas } = this.state;
     const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
     return (
       <div>
-        <XYPlot xType="ordinal" width={100 * data.length} height={300} xDistance={100}>
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis />
-          <YAxis />
-          <BarSeries barWidth={0.5} data={chartData} />
-        </XYPlot>
+        <h2>Todetut koronatapaukset ikäryhmittäin</h2>
+        <div>
+          <XYPlot xType="ordinal" width={100 * data.length} height={300} xDistance={100}>
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis />
+            <YAxis />
+            <BarSeries barWidth={0.5} data={chartData} />
+          </XYPlot>
+        </div>
+        <h2>Esimerkki huonosti kuvatusta datasta, jossa poikkeava kolumni heikentää tiedon luettavuutta.</h2>
+        <div>
+          <XYPlot xType="ordinal" width={100 * data.length} height={300} xDistance={100}>
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis />
+            <YAxis />
+            <BarSeries barWidth={0.5} data={badData} />
+          </XYPlot>
+        </div>
       </div>
     );
   }
