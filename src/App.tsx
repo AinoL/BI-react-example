@@ -19,7 +19,7 @@ function App() {
     { x: 9, y: 0 }
   ];
 
-  // Label is a required property regardless if you want to use it or not.
+// Label is a required property regardless if you want to use it or not.
 const barChartData: LabelSeriesPoint[] =
 [
   { x: 10, y: 10, label: '' },

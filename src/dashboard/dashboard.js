@@ -12,7 +12,12 @@ class Dashboard extends React.Component {
 
     componentDidMount() {
         demo.helloWorld();
-        demo.convertAgeData(age);
+        // demo.convertAgeData(age);
+
+        // Decode JSON to better JSON and objects
+
+        // var obj = JSON.parse(age);
+        // console.log(obj);
     }
   }
 
